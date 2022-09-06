@@ -1,7 +1,7 @@
 let express = require('express');
 let path = require('path');
 let fs = require('fs');
-let MongoClient = require('mongodb').MongoClient;
+
 let bodyParser = require('body-parser');
 let app = express();
 
@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
   });
 
 app.get('/profile-picture', function (req, res) {
-  let img = fs.readFileSync(path.join(__dirname, "images/profile-1.jpg"));
+  let img = fs.readFileSync(path.join(__dirname, "images/uis.png"));
   res.writeHead(200, {'Content-Type': 'image/jpg' });
   res.end(img, 'binary');
 });
@@ -53,6 +53,10 @@ app.post('/update-profile', function (req, res) {
   // Send response
   res.send(userObj);
 });
+
+
+
+let MongoClient = require('mongodb').MongoClient;
 
 app.get('/get-profile', function (req, res) {
   let response = {};
